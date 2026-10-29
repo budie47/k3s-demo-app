@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>k3s Demo App</title>
+  <style>
+    :root { --bg: #f5f7fa; --card: #fff; --text: #1f2933; --muted: #616e7c; --accent: #ef7b4d; --border: #e4e7eb; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #111827; --card: #1f2937; --text: #f3f4f6; --muted: #9ca3af; --border: #374151; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 16px;
+           background: var(--bg); color: var(--text); font: 16px/1.5 system-ui, sans-serif; }
+    main { width: 100%; max-width: 520px; background: var(--card); border: 1px solid var(--border);
+           border-radius: 12px; padding: 32px; }
+    h1 { margin: 0 0 4px; font-size: 1.5rem; }
+    p { margin: 0 0 24px; color: var(--muted); }
+    dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; margin: 0; }
+    dt { color: var(--muted); }
+    dd { margin: 0; font-family: ui-monospace, monospace; overflow-wrap: anywhere; }
+    .version { display: inline-block; padding: 2px 10px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Hello from k3s 👋</h1>
+    <p>Deployed by Argo CD from GitHub. Refresh to see the load balance across pods.</p>
+    <dl>
+      <dt>Version</dt><dd><span class="version">v1</span></dd>
+      <dt>Served by pod</dt><dd><!--# echo var="hostname" --></dd>
+      <dt>Server time</dt><dd><!--# echo var="date_local" --></dd>
+    </dl>
+  </main>
+</body>
+</html>

@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: demo-app
+labels:
+  - pairs:
+      app.kubernetes.io/name: demo-app
+    includeSelectors: true
+
+resources:
+  - namespace.yaml
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
+
+# Hash-suffixed ConfigMaps: editing a file triggers a rolling update of the pods.
+configMapGenerator:
+  - name: demo-app-html
+    files:
+      - app/index.html
+  - name: demo-app-nginx
+    files:
+      - app/default.conf
